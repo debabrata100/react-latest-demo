@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
+import { FadeIn } from "../../components";
 import { connect } from "react-redux";
 import styled, { css } from "styled-components";
 import { ReactReduxContext } from "react-redux";
 import reducer from "./reducer";
 import * as actionTypes from "./constants";
 
-const AboutContainer = styled.div`
+const ProfileContainer = styled.div`
     padding-top: 100px;
     display: flex;
     flex-direction: column;
@@ -14,6 +15,7 @@ const AboutContainer = styled.div`
 const RecipesContainer = styled.div`
     display: flex;
     flex-direction: column;
+    margin-top: 32px;
 `;
 const Recipe = styled.div`
     color: orange;
@@ -44,22 +46,24 @@ function Profile(props) {
         console.log("rcp", rcp);
     };
     return (
-        <AboutContainer>
+        <ProfileContainer>
             <h1>{name}</h1>
-            Recipes to cook
+            Recipes need to cook Methamphetamine
             <RecipesContainer>
-                {recipes &&
-                    recipes.map((rcp, index) => (
-                        <Recipe
-                            key={index}
-                            onClick={e => onRecipeClicked(rcp, index)}
-                            {...rcp}
-                        >
-                            {rcp.name}
-                        </Recipe>
-                    ))}
+                <FadeIn delay={70}>
+                    {recipes &&
+                        recipes.map((rcp, index) => (
+                            <Recipe
+                                key={index}
+                                onClick={e => onRecipeClicked(rcp, index)}
+                                {...rcp}
+                            >
+                                {rcp.name}
+                            </Recipe>
+                        ))}
+                </FadeIn>
             </RecipesContainer>
-        </AboutContainer>
+        </ProfileContainer>
     );
 }
 const mapStateToProps = state => ({

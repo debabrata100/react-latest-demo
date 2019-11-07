@@ -6,6 +6,7 @@
     "connected-react-router": "^6.5.2",
     "immer": "^4.0.2",
     "react": "^16.11.0",
+    "react-addons-css-transition-group": "^15.6.2",
     "react-dom": "^16.11.0",
     "react-redux": "^7.1.1",
     "react-router": "^5.1.2",

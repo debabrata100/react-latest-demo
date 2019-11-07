@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import { Switch, Route, Link } from "react-router-dom";
 
@@ -7,6 +7,7 @@ import Home from "../Home";
 import About from "../About";
 import Profile from "../Profile";
 import history from "../../utils/history";
+import { connect } from "react-redux";
 
 const AppContainer = styled.div`
     width: 100%;
@@ -34,7 +35,12 @@ const HeaderLink = styled(Link)`
     font-size: 16px;
     border: 2px solid #41addd;
     color: #41addd;
-
+    ${props =>
+        props.selected &&
+        css`
+            background-color: #41addd;
+            color: #fff;
+        `}
     &:active {
         background: #41addd;
         color: #fff;
@@ -47,9 +53,15 @@ function App(props) {
     return (
         <AppContainer>
             <AppHeader>
-                <HeaderLink to="/home">Home</HeaderLink>
-                <HeaderLink to="/about">About</HeaderLink>
-                <HeaderLink to="/">Profile</HeaderLink>
+                <HeaderLink to="/home" selected={props.pathname === "/home"}>
+                    Home
+                </HeaderLink>
+                <HeaderLink to="/about" selected={props.pathname === "/about"}>
+                    About
+                </HeaderLink>
+                <HeaderLink to="/" selected={props.pathname === "/"}>
+                    Profile
+                </HeaderLink>
                 <button
                     onClick={handlePush}
                     style={{ height: 20, cursor: "pointer" }}
@@ -65,5 +77,9 @@ function App(props) {
         </AppContainer>
     );
 }
-
-export default App;
+const mapStateToProps = state => ({
+    pathname: state.router.location.pathname,
+    search: state.router.location.search,
+    hash: state.router.location.hash
+});
+export default connect(mapStateToProps)(App);

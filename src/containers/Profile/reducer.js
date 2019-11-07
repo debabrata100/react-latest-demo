@@ -11,7 +11,8 @@ const initialState = {
         { name: "Styled Components", read: false },
         { name: "Localization React Intl", read: false },
         { name: "Immutable state change(with Immer)", read: false },
-        { name: "Code Spliting", read: false }
+        { name: "Code Spliting", read: false },
+        { name: "Editor Config", read: false }
     ]
 };
 
