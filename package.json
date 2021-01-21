@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "connected-react-router": "^6.5.2",
-    "immer": "^4.0.2",
+    "immer": "^8.0.1",
     "react": "^16.11.0",
     "react-addons-css-transition-group": "^15.6.2",
     "react-dom": "^16.11.0",
